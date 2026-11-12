@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SonoJS Flags</title>
+    <meta
+      name="description"
+      content="Browse and copy ISO2 flag SVG URLs for SonoJS PhoneInput."
+    />
+    <link rel="icon" href="flags/us.svg" type="image/svg+xml" />
+    <script>
+      ;(() => {
+        const KEY = "sonojs-flags-theme"
+        const pref = localStorage.getItem(KEY) || "system"
+        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches
+        const theme =
+          pref === "light" || pref === "dark" ? pref : dark ? "dark" : "light"
+        document.documentElement.dataset.theme = theme
+        document.documentElement.dataset.themePref = pref
+        document.documentElement.style.colorScheme = theme
+      })()
+    </script>
+    <style>
+      :root,
+      html[data-theme="light"] {
+        color-scheme: light;
+        --bg: #f4f4f5;
+        --surface: #ffffff;
+        --border: color-mix(in oklab, #71717a 28%, transparent);
+        --text: #18181b;
+        --muted: #71717a;
+        --accent: #2563eb;
+        --accent-fg: #ffffff;
+        --shadow: 0 10px 28px color-mix(in oklab, #18181b 8%, transparent);
+        --radius: 12px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        --sans: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        --code-bg: #1e1e1e;
+        --code-fg: #d4d4d4;
+        --code-header: #252526;
+        --tok-tag: #569cd6;
+        --tok-attr: #9cdcfe;
+        --tok-str: #ce9178;
+        --tok-punc: #808080;
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #09090b;
+        --surface: #18181b;
+        --border: color-mix(in oklab, #a1a1aa 28%, transparent);
+        --text: #fafafa;
+        --muted: #a1a1aa;
+        --accent: #396ef0;
+        --shadow: 0 12px 32px color-mix(in oklab, #000 45%, transparent);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+      }
+
+      body {
+        padding: 24px 16px 56px;
+      }
+
+      .wrap {
+        width: min(960px, 100%);
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        align-items: end;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: clamp(1.4rem, 2.8vw, 1.75rem);
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9375rem;
+        line-height: 1.45;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.875rem;
+      }
+
+      .header-aside {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .theme-toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+
+      .theme-toggle svg {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 18px;
+        height: 18px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .theme-toggle .icon-sun {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .theme-toggle .icon-moon {
+        opacity: 0;
+        transform: scale(0) rotate(90deg);
+      }
+
+      html[data-theme="dark"] .theme-toggle .icon-sun {
+        opacity: 0;
+        transform: scale(0) rotate(-90deg);
+      }
+
+      html[data-theme="dark"] .theme-toggle .icon-moon {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+        align-items: center;
+      }
+
+      .search-wrap {
+        position: relative;
+        flex: 1 1 220px;
+        min-width: 0;
+      }
+
+      .search {
+        width: 100%;
+        height: 44px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text);
+        padding: 0 40px 0 14px;
+        font: inherit;
+        outline: none;
+      }
+
+      .search:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+      }
+
+      .search-clear {
+        position: absolute;
+        inset-inline-end: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        display: none;
+      }
+
+      .search-wrap.has-value .search-clear {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .search-clear:hover {
+        background: color-mix(in oklab, var(--muted) 14%, transparent);
+        color: var(--text);
+        filter: none;
+      }
+
+      .sort-switch {
+        display: inline-flex;
+        padding: 3px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        flex-shrink: 0;
+      }
+
+      .sort-switch button {
+        height: 38px;
+        min-width: 52px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        font-family: var(--mono);
+        cursor: pointer;
+      }
+
+      .sort-switch button[aria-pressed="true"] {
+        background: var(--accent);
+        color: var(--accent-fg);
+      }
+
+      .footer-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-actions button {
+        height: auto;
+        min-height: 44px;
+        padding: 10px 14px;
+        white-space: normal;
+        text-align: start;
+        line-height: 1.3;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text);
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .footer-actions button:hover {
+        border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
+      }
+
+      button,
+      .btn {
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 10px;
+      }
+
+      .card {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: center;
+        min-height: 68px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        text-align: start;
+        cursor: pointer;
+        overflow: hidden;
+        color: inherit;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease,
+          transform 0.12s ease;
+      }
+
+      .card:hover {
+        border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+        box-shadow: var(--shadow);
+      }
+
+      .card:active {
+        transform: scale(0.99);
+      }
+
+      .card[aria-selected="true"] {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent);
+      }
+
+      .flag-frame {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--muted) 10%, transparent);
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+      }
+
+      .flag-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .card-text {
+        min-width: 0;
+        display: grid;
+        gap: 2px;
+      }
+
+      .name {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        line-height: 1.25;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .sub {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .empty {
+        padding: 48px 16px;
+        text-align: center;
+        color: var(--muted);
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+      }
+
+      dialog {
+        width: min(460px, calc(100vw - 2rem));
+        max-width: calc(100vw - 2rem);
+        overflow-x: hidden;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        color: var(--text);
+        padding: 0;
+        box-shadow: var(--shadow);
+      }
+
+      dialog::backdrop {
+        background: color-mix(in oklab, #000 50%, transparent);
+      }
+
+      .sheet {
+        display: grid;
+        gap: 16px;
+        padding: 18px;
+        min-width: 0;
+        overflow-x: hidden;
+      }
+
+      .sheet-head {
+        display: grid;
+        grid-template-columns: 56px 1fr auto;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .sheet-head .flag-frame {
+        width: 56px;
+        height: 56px;
+      }
+
+      .sheet h2 {
+        margin: 0;
+        font-size: 1.125rem;
+        line-height: 1.25;
+      }
+
+      .icon-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--muted);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: start;
+      }
+
+      .icon-btn:hover {
+        background: color-mix(in oklab, var(--muted) 14%, transparent);
+        color: var(--text);
+      }
+
+      .icon-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .rows {
+        display: grid;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .row-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 24px;
+        min-width: 0;
+      }
+
+      .inline-field {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 32px;
+        gap: 4px;
+        align-items: center;
+        min-width: 0;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 2px;
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+
+      .field-value {
+        min-width: 0;
+        font-family: var(--mono);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .code-block {
+        min-width: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #2d2d2d;
+        background: var(--code-bg);
+      }
+
+      .code-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 6px 8px 6px 12px;
+        background: var(--code-header);
+        color: #cccccc;
+        font-size: 0.75rem;
+      }
+
+      .code-body {
+        margin: 0;
+        padding: 12px;
+        font-family: var(--mono);
+        font-size: 0.8125rem;
+        line-height: 1.65;
+        color: var(--code-fg);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
+
+      .tok-tag {
+        color: var(--tok-tag);
+      }
+
+      .tok-attr {
+        color: var(--tok-attr);
+      }
+
+      .tok-str {
+        color: var(--tok-str);
+      }
+
+      .tok-punc {
+        color: var(--tok-punc);
+      }
+
+      .copy-btn {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .copy-btn.on-code {
+        color: #cccccc;
+      }
+
+      .copy-btn:hover {
+        background: color-mix(in oklab, var(--muted) 14%, transparent);
+        color: var(--text);
+      }
+
+      .copy-btn.on-code:hover {
+        background: color-mix(in oklab, #fff 10%, transparent);
+        color: #fff;
+      }
+
+      .copy-btn svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+      }
+
+      .copy-btn .i-check {
+        display: none;
+      }
+
+      .copy-btn.is-copied .i-copy {
+        display: none;
+      }
+
+      .copy-btn.is-copied .i-check {
+        display: block;
+        color: #4ade80;
+      }
+
+      .sheet-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+      }
+
+      .sheet-actions .link {
+        color: var(--muted);
+        font-size: 0.875rem;
+        text-decoration: none;
+      }
+
+      .sheet-actions .link:hover {
+        color: var(--text);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .sheet-actions .close-btn {
+        height: 40px;
+        padding: 0 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .sheet-actions .close-btn:hover {
+        background: color-mix(in oklab, var(--muted) 10%, transparent);
+      }
+
+      .toast {
+        position: fixed;
+        inset-inline: 0;
+        bottom: 20px;
+        width: max-content;
+        max-width: calc(100vw - 2rem);
+        margin-inline: auto;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: #18181b;
+        color: #fafafa;
+        font-size: 0.875rem;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        z-index: 50;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      kbd {
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1px 6px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 420px) {
+        .row-pair {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1>SonoJS Flags</h1>
+          <p class="lede">Find a flag, copy the URL or snippet.</p>
+        </div>
+        <div class="header-aside">
+          <button
+            type="button"
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <svg
+              class="icon-sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg
+              class="icon-moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+            <span class="sr-only">Toggle theme</span>
+          </button>
+          <div class="meta" id="stats">Loading…</div>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <div class="search-wrap" id="search-wrap">
+          <input
+            id="q"
+            class="search"
+            type="search"
+            placeholder="Search name, ISO, or dial… (/)"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            id="search-clear"
+            class="search-clear"
+            aria-label="Clear search"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="sort-switch" role="group" aria-label="Sort by name">
+          <button type="button" data-sort="az" aria-pressed="true">A–Z</button>
+          <button type="button" data-sort="za" aria-pressed="false">Z–A</button>
+        </div>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+      <div id="empty" class="empty" hidden>No countries match. Try another search.</div>
+
+      <div class="footer-actions">
+        <button type="button" id="copy-filtered-json">
+          Copy visible countries as JSON
+        </button>
+        <button type="button" id="copy-filtered-md">
+          Copy visible countries as Markdown
+        </button>
+      </div>
+    </div>
+
+    <dialog id="sheet">
+      <form method="dialog" class="sheet">
+        <div class="sheet-head">
+          <div class="flag-frame">
+            <img id="sheet-flag" alt="" width="56" height="56" />
+          </div>
+          <div>
+            <h2 id="sheet-name">Country</h2>
+            <div class="sub" id="sheet-meta"></div>
+          </div>
+          <button
+            type="submit"
+            class="icon-btn"
+            value="close"
+            aria-label="Close"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="rows">
+          <div class="row-pair">
+            <div class="inline-field">
+              <div>
+                <span class="field-label">ISO</span>
+                <div class="field-value" id="v-code"></div>
+              </div>
+              <button
+                type="button"
+                class="copy-btn"
+                data-copy="code"
+                aria-label="Copy ISO"
+              >
+                <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+            <div class="inline-field">
+              <div>
+                <span class="field-label">Dial</span>
+                <div class="field-value" id="v-dial"></div>
+              </div>
+              <button
+                type="button"
+                class="copy-btn"
+                data-copy="dial"
+                aria-label="Copy dial"
+              >
+                <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-head">
+              <span>URL</span>
+              <button
+                type="button"
+                class="copy-btn on-code"
+                data-copy="url"
+                aria-label="Copy URL"
+              >
+                <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+            <pre class="code-body" id="v-cdn"></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-head">
+              <span>img</span>
+              <button
+                type="button"
+                class="copy-btn on-code"
+                data-copy="img"
+                aria-label="Copy img"
+              >
+                <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+            <pre class="code-body" id="v-img"></pre>
+          </div>
+        </div>
+
+        <div class="sheet-actions">
+          <a id="open-svg" class="link" href="#" target="_blank" rel="noopener"
+            >Open SVG</a
+          >
+          <button type="submit" class="close-btn" value="close">Close</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status"></div>
+
+    <script>
+      const THEME_KEY = "sonojs-flags-theme"
+      const DEFAULT_BASE = "https://cdn.jsdelivr.net/gh/OWNER/SonoJS-flags@main"
+
+      const qEl = document.getElementById("q")
+      const searchWrap = document.getElementById("search-wrap")
+      const searchClear = document.getElementById("search-clear")
+      const grid = document.getElementById("grid")
+      const empty = document.getElementById("empty")
+      const stats = document.getElementById("stats")
+      const sheet = document.getElementById("sheet")
+      const toast = document.getElementById("toast")
+      const themeToggle = document.getElementById("theme-toggle")
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)")
+
+      /** @type {Array<{code:string,name:string,dial:string}>} */
+      let countries = []
+      /** @type {{code:string,name:string,dial:string}|null} */
+      let selected = null
+      /** @type {"az"|"za"} */
+      let sortDir = "az"
+      /** @type {Record<string,string>} */
+      let copyValues = { code: "", dial: "", url: "", img: "" }
+      const sortButtons = document.querySelectorAll("[data-sort]")
+
+      function resolveTheme(pref) {
+        if (pref === "light" || pref === "dark") return pref
+        return systemDark.matches ? "dark" : "light"
+      }
+
+      function applyTheme(pref) {
+        const next =
+          pref === "light" || pref === "dark" || pref === "system"
+            ? pref
+            : "system"
+        const theme = resolveTheme(next)
+        document.documentElement.dataset.theme = theme
+        document.documentElement.dataset.themePref = next
+        document.documentElement.style.colorScheme = theme
+        localStorage.setItem(THEME_KEY, next)
+      }
+
+      applyTheme(localStorage.getItem(THEME_KEY) || "system")
+      themeToggle.addEventListener("click", () => {
+        const current = resolveTheme(
+          localStorage.getItem(THEME_KEY) || "system"
+        )
+        applyTheme(current === "dark" ? "light" : "dark")
+      })
+      systemDark.addEventListener("change", () => {
+        if ((localStorage.getItem(THEME_KEY) || "system") === "system") {
+          applyTheme("system")
+        }
+      })
+
+      function flagPath(code) {
+        return `flags/${code.toLowerCase()}.svg`
+      }
+
+      function pageBase() {
+        if (!location.protocol.startsWith("http")) return ""
+        const path = location.pathname.replace(/\/index\.html?$/i, "")
+        const root = path.endsWith("/") ? path.slice(0, -1) : path
+        return `${location.origin}${root}`
+      }
+
+      function getBase() {
+        return pageBase() || DEFAULT_BASE
+      }
+
+      function cdnUrl(code) {
+        return `${getBase()}/flags/${code.toLowerCase()}.svg`
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+      }
+
+      function highlightUrl(url) {
+        return `<span class="tok-str">${escapeHtml(url)}</span>`
+      }
+
+      function highlightImg(url, name) {
+        const src = escapeHtml(url)
+        const alt = escapeHtml(name)
+        return [
+          `<span class="tok-punc">&lt;</span><span class="tok-tag">img</span>`,
+          ` <span class="tok-attr">src</span><span class="tok-punc">=</span><span class="tok-str">"${src}"</span>`,
+          ` <span class="tok-attr">alt</span><span class="tok-punc">=</span><span class="tok-str">"${alt}"</span>`,
+          ` <span class="tok-attr">width</span><span class="tok-punc">=</span><span class="tok-str">"20"</span>`,
+          ` <span class="tok-attr">height</span><span class="tok-punc">=</span><span class="tok-str">"20"</span>`,
+          `<span class="tok-punc"> /&gt;</span>`,
+        ].join("")
+      }
+
+      function showToast(message) {
+        toast.textContent = message
+        toast.classList.add("show")
+        clearTimeout(showToast._t)
+        showToast._t = setTimeout(() => toast.classList.remove("show"), 1600)
+      }
+
+      async function copyText(text, button) {
+        try {
+          await navigator.clipboard.writeText(text)
+          if (button) {
+            button.classList.add("is-copied")
+            clearTimeout(button._copiedT)
+            button._copiedT = setTimeout(
+              () => button.classList.remove("is-copied"),
+              1500
+            )
+          } else {
+            showToast("Copied")
+          }
+        } catch {
+          showToast("Copy failed")
+        }
+      }
+
+      function syncSearchChrome() {
+        searchWrap.classList.toggle("has-value", Boolean(qEl.value.trim()))
+      }
+
+      function filtered() {
+        const needle = qEl.value.trim().toLowerCase()
+        const list = !needle
+          ? countries.slice()
+          : countries.filter(
+              (c) =>
+                c.name.toLowerCase().includes(needle) ||
+                c.code.toLowerCase().includes(needle) ||
+                c.dial.toLowerCase().includes(needle)
+            )
+        list.sort((a, b) => {
+          const cmp = a.name.localeCompare(b.name, undefined, {
+            sensitivity: "base",
+          })
+          return sortDir === "az" ? cmp : -cmp
+        })
+        return list
+      }
+
+      function setSort(next) {
+        sortDir = next === "za" ? "za" : "az"
+        sortButtons.forEach((btn) => {
+          btn.setAttribute(
+            "aria-pressed",
+            btn.getAttribute("data-sort") === sortDir ? "true" : "false"
+          )
+        })
+        render()
+      }
+
+      sortButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setSort(btn.getAttribute("data-sort") || "az")
+        })
+      })
+
+      function render() {
+        const list = filtered()
+        stats.innerHTML = `${list.length} / ${countries.length} · <kbd>/</kbd>`
+        grid.replaceChildren()
+        empty.hidden = list.length > 0
+        syncSearchChrome()
+
+        const frag = document.createDocumentFragment()
+        for (const c of list) {
+          const btn = document.createElement("button")
+          btn.type = "button"
+          btn.className = "card"
+          btn.setAttribute(
+            "aria-selected",
+            selected?.code === c.code ? "true" : "false"
+          )
+          btn.innerHTML = `
+            <span class="flag-frame">
+              <img src="${flagPath(c.code)}" alt="" width="44" height="44" loading="lazy" decoding="async" />
+            </span>
+            <span class="card-text">
+              <span class="name" title="${escapeHtml(c.name)}">${escapeHtml(c.name)}</span>
+              <span class="sub">${escapeHtml(c.code)} · ${escapeHtml(c.dial)}</span>
+            </span>
+          `
+          btn.addEventListener("click", () => openSheet(c))
+          frag.appendChild(btn)
+        }
+        grid.appendChild(frag)
+      }
+
+      function setUrlCode(code) {
+        const url = new URL(location.href)
+        if (code) url.searchParams.set("c", String(code).toUpperCase())
+        else url.searchParams.delete("c")
+        history.replaceState(null, "", url)
+      }
+
+      function openSheet(c) {
+        selected = c
+        setUrlCode(c.code)
+        const url = cdnUrl(c.code)
+        const img = `<img src="${url}" alt="${c.name}" width="20" height="20" />`
+        copyValues = { code: c.code, dial: c.dial, url, img }
+
+        document.getElementById("sheet-flag").src = flagPath(c.code)
+        document.getElementById("sheet-name").textContent = c.name
+        document.getElementById("sheet-meta").textContent = `${c.code} · ${c.dial}`
+        document.getElementById("v-code").textContent = c.code
+        document.getElementById("v-dial").textContent = c.dial
+        document.getElementById("v-cdn").innerHTML = highlightUrl(url)
+        document.getElementById("v-img").innerHTML = highlightImg(url, c.name)
+        document.getElementById("open-svg").href = flagPath(c.code)
+        if (!sheet.open) sheet.showModal()
+        render()
+      }
+
+      function closeSelection() {
+        selected = null
+        setUrlCode(null)
+        render()
+      }
+
+      sheet.addEventListener("close", closeSelection)
+
+      sheet.addEventListener("click", (event) => {
+        if (event.target === sheet) {
+          sheet.close()
+          return
+        }
+        const btn = event.target.closest("[data-copy]")
+        if (!btn) return
+        const key = btn.getAttribute("data-copy")
+        const value = key ? copyValues[key] : ""
+        if (value) void copyText(value, btn)
+      })
+
+      document
+        .getElementById("copy-filtered-json")
+        .addEventListener("click", () => {
+          void copyText(JSON.stringify(filtered(), null, 2))
+        })
+
+      document
+        .getElementById("copy-filtered-md")
+        .addEventListener("click", () => {
+          const lines = filtered().map(
+            (c) =>
+              `- ![${c.code}](${cdnUrl(c.code)}) **${c.name}** \`${c.code}\` ${c.dial}`
+          )
+          void copyText(lines.join("\n"))
+        })
+
+      qEl.addEventListener("input", render)
+      searchClear.addEventListener("click", () => {
+        qEl.value = ""
+        qEl.focus()
+        render()
+      })
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "/" && document.activeElement !== qEl && !sheet.open) {
+          event.preventDefault()
+          qEl.focus()
+          qEl.select()
+        }
+      })
+
+      fetch("./countries.json")
+        .then((r) => {
+          if (!r.ok) throw new Error("Failed to load countries.json")
+          return r.json()
+        })
+        .then((data) => {
+          countries = Array.isArray(data) ? data : []
+          render()
+          const code = new URLSearchParams(location.search).get("c")
+          if (!code) return
+          const match = countries.find(
+            (c) => c.code.toUpperCase() === code.toUpperCase()
+          )
+          if (match) openSheet(match)
+        })
+        .catch((err) => {
+          stats.textContent = String(err.message || err)
+          empty.hidden = false
+          empty.textContent = "Could not load countries.json"
+        })
+    </script>
+  </body>
+</html>
