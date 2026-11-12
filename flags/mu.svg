@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-mu" viewBox="0 0 512 512">
-  <g fill-rule="evenodd">
-    <path fill="#009f4d" d="M0 384h512v128H0z"/>
-    <path fill="#151f6d" d="M0 128h512v128H0z"/>
-    <path fill="#ee2737" d="M0 0h512v128H0z"/>
-    <path fill="#ffcd00" d="M0 256h512v128H0z"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 342">
+<rect y="0" fill="#d01c1f" width="513" height="85.5"/>
+<rect y="85.5" fill="#2d3359" width="513" height="85.5"/>
+<rect y="171" fill="#f7b718" width="513" height="85.5"/>
+<rect y="256.5" fill="#008658" width="513" height="85.5"/>
 </svg>

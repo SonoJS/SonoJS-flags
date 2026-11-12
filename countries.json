@@ -65,6 +65,11 @@
     "dial": "+297"
   },
   {
+    "code": "AC",
+    "name": "Ascension Island",
+    "dial": "+247"
+  },
+  {
     "code": "AU",
     "name": "Australia",
     "dial": "+61"
@@ -135,6 +140,11 @@
     "dial": "+591"
   },
   {
+    "code": "BQ-BO",
+    "name": "Bonaire",
+    "dial": "+599"
+  },
+  {
     "code": "BQ",
     "name": "Bonaire, Sint Eustatius and Saba",
     "dial": "+599"
@@ -148,6 +158,11 @@
     "code": "BW",
     "name": "Botswana",
     "dial": "+267"
+  },
+  {
+    "code": "BV",
+    "name": "Bouvet Island",
+    "dial": "+47"
   },
   {
     "code": "BR",
@@ -200,9 +215,19 @@
     "dial": "+1"
   },
   {
+    "code": "IC",
+    "name": "Canary Islands",
+    "dial": "+34"
+  },
+  {
     "code": "CV",
     "name": "Cape Verde",
     "dial": "+238"
+  },
+  {
+    "code": "ES-CT",
+    "name": "Catalonia",
+    "dial": "+34"
   },
   {
     "code": "KY",
@@ -330,6 +355,11 @@
     "dial": "+503"
   },
   {
+    "code": "GB-ENG",
+    "name": "England",
+    "dial": "+44"
+  },
+  {
     "code": "GQ",
     "name": "Equatorial Guinea",
     "dial": "+240"
@@ -353,6 +383,11 @@
     "code": "ET",
     "name": "Ethiopia",
     "dial": "+251"
+  },
+  {
+    "code": "EU",
+    "name": "European Union",
+    "dial": "+388"
   },
   {
     "code": "FK",
@@ -388,6 +423,11 @@
     "code": "PF",
     "name": "French Polynesia",
     "dial": "+689"
+  },
+  {
+    "code": "TF",
+    "name": "French Southern Territories",
+    "dial": "+262"
   },
   {
     "code": "GA",
@@ -473,6 +513,11 @@
     "code": "HT",
     "name": "Haiti",
     "dial": "+509"
+  },
+  {
+    "code": "HM",
+    "name": "Heard Island and McDonald Islands",
+    "dial": "+672"
   },
   {
     "code": "HN",
@@ -810,6 +855,11 @@
     "dial": "+389"
   },
   {
+    "code": "GB-NIR",
+    "name": "Northern Ireland",
+    "dial": "+44"
+  },
+  {
     "code": "MP",
     "name": "Northern Mariana Islands",
     "dial": "+1-670"
@@ -915,6 +965,11 @@
     "dial": "+250"
   },
   {
+    "code": "BQ-SA",
+    "name": "Saba",
+    "dial": "+599"
+  },
+  {
     "code": "BL",
     "name": "Saint Barthelemy",
     "dial": "+590"
@@ -970,6 +1025,11 @@
     "dial": "+966"
   },
   {
+    "code": "GB-SCT",
+    "name": "Scotland",
+    "dial": "+44"
+  },
+  {
     "code": "SN",
     "name": "Senegal",
     "dial": "+221"
@@ -993,6 +1053,11 @@
     "code": "SG",
     "name": "Singapore",
     "dial": "+65"
+  },
+  {
+    "code": "BQ-SE",
+    "name": "Sint Eustatius",
+    "dial": "+599"
   },
   {
     "code": "SX",
@@ -1023,6 +1088,11 @@
     "code": "ZA",
     "name": "South Africa",
     "dial": "+27"
+  },
+  {
+    "code": "GS",
+    "name": "South Georgia and the South Sandwich Islands",
+    "dial": "+500"
   },
   {
     "code": "KR",
@@ -1115,6 +1185,11 @@
     "dial": "+1-868"
   },
   {
+    "code": "TA",
+    "name": "Tristan da Cunha",
+    "dial": "+290"
+  },
+  {
     "code": "TN",
     "name": "Tunisia",
     "dial": "+216"
@@ -1138,6 +1213,11 @@
     "code": "TV",
     "name": "Tuvalu",
     "dial": "+688"
+  },
+  {
+    "code": "UM",
+    "name": "U.S. Minor Outlying Islands",
+    "dial": "+1"
   },
   {
     "code": "VI",
@@ -1200,6 +1280,11 @@
     "dial": "+84"
   },
   {
+    "code": "GB-WLS",
+    "name": "Wales",
+    "dial": "+44"
+  },
+  {
     "code": "WF",
     "name": "Wallis and Futuna",
     "dial": "+681"
@@ -1208,6 +1293,21 @@
     "code": "EH",
     "name": "Western Sahara",
     "dial": "+212"
+  },
+  {
+    "code": "XA",
+    "name": "XA",
+    "dial": "+0"
+  },
+  {
+    "code": "XC",
+    "name": "XC",
+    "dial": "+0"
+  },
+  {
+    "code": "XO",
+    "name": "XO",
+    "dial": "+0"
   },
   {
     "code": "YE",

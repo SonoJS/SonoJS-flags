@@ -1,8 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-sn" viewBox="0 0 512 512">
-  <g fill-rule="evenodd" stroke-width="1pt">
-    <path fill="#0b7226" d="M0 0h170.7v512H0z"/>
-    <path fill="#ff0" d="M170.7 0h170.6v512H170.7z"/>
-    <path fill="#bc0000" d="M341.3 0H512v512H341.3z"/>
-  </g>
-  <path fill="#0b7226" d="M273.6 239H331l-45.2 35 16.5 55.4-45.3-35-45.2 33.4 16.5-53.9L183 239H239l18.1-57z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 85.333 512 341.333">
+<rect y="85.331" fill="#FFDA44" width="512" height="341.326"/>
+<rect x="330.207" y="85.331" fill="#D80027" width="181.793" height="341.337"/>
+<g>
+	<rect y="85.331" fill="#496E2D" width="181.793" height="341.337"/>
+	<polygon fill="#496E2D" points="255.999,196.632 270.732,241.979 318.417,241.979 279.841,270.008 294.575,315.356    255.999,287.33 217.422,315.356 232.159,270.008 193.583,241.979 241.264,241.979  "/>
+</g>
 </svg>

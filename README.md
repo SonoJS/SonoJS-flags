@@ -22,23 +22,24 @@ countries.json     # code / name / dial list used by phone-input
 
 ## Count
 
-245 SVGs — one per entry in `countries.json`.
+265 SVGs — one per entry in `countries.json` (includes regional codes like `gb-eng`).
 
 ## Usage (after this repo is on GitHub)
 
 jsDelivr:
 
 ```text
-https://cdn.jsdelivr.net/gh/<owner>/SonoJS-flags@main/flags/ir.svg
+https://cdn.jsdelivr.net/gh/SonoJS/SonoJS-flags@main/flags/ir.svg
 ```
 
 GitHub Pages (if enabled):
 
 ```text
-https://<owner>.github.io/SonoJS-flags/flags/ir.svg
+https://sonojs.github.io/SonoJS-flags/flags/ir.svg
 ```
 
-In `PhoneInput`, build the URL from the country `code`:
+`PhoneInput` uses this by default (`DEFAULT_FLAG_CDN_BASE`). Override with
+`flagCdnBase` if needed:
 
 ```ts
 const src = `${FLAG_CDN_BASE}/flags/${code.toLowerCase()}.svg`

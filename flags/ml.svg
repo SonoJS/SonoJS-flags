@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-ml" viewBox="0 0 512 512">
-  <g fill-rule="evenodd">
-    <path fill="red" d="M340.6 0H512v512H340.6z"/>
-    <path fill="#009a00" d="M0 0h170.3v512H0z"/>
-    <path fill="#ff0" d="M170.3 0h171.2v512H170.3z"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513 342">
+<rect fill="#14b53a" width="171" height="342"/>
+<rect x="171" fill="#fcd116" width="171" height="342"/>
+<rect x="342" fill="#ce1126" width="171" height="342"/>
 </svg>
