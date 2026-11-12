@@ -7,4 +7,4 @@ The SVG files under `flags/` are derived from
 MIT License, Copyright (c) 2013 Panayiotis Lipiridis.
 
 Only the ISO2 files needed by SonoJS phone-input were copied; paths and
-filenames use lowercase ISO 3166-1 alpha-2 codes (for example `ir.svg`).
+filenames use lowercase ISO 3166-1 alpha-2 codes (for example `us.svg`).
