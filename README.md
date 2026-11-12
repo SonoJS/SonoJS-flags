@@ -1,51 +1,35 @@
 # SonoJS Flags
 
-Square ISO2 flag SVGs for SonoJS `PhoneInput` and other UI.
+پرچم‌های SVG برای [SonoJS](https://sonojs.com) — مخصوص کامپوننت Phone Input و هر جایی که به آیکون کشور نیاز داری.
 
-## Browse UI
+- سایت: [sonojs.com](https://sonojs.com)
+- گیت‌هاب SonoJS: [github.com/MiladJoodi/SonoJS](https://github.com/MiladJoodi/SonoJS)
+- این ریپو: [github.com/SonoJS/SonoJS-flags](https://github.com/SonoJS/SonoJS-flags)
 
-Open [`index.html`](./index.html) locally, or enable GitHub Pages on this repo
-(root). The page supports:
+## اجرا (دیدن لیست پرچم‌ها)
 
-- Search by name / ISO / dial
-- Square flag previews with name / ISO / dial on each card
-- Copy ISO, dial, URL, and `<img>` snippet
-- Copy filtered JSON or markdown
+از پوشه همین پروژه:
 
-## Layout
-
-```text
-index.html         # browse + copy UI
-flags/{iso2}.svg   # lowercase, e.g. flags/ir.svg
-countries.json     # code / name / dial list used by phone-input
+```bash
+npx serve .
 ```
 
-## Count
+بعد در مرورگر آدرسی که ترمینال می‌دهد را باز کن (مثلاً `http://localhost:3000`).
 
-265 SVGs — one per entry in `countries.json` (includes regional codes like `gb-eng`).
+یا فقط فایل `index.html` را باز کن.
 
-## Usage (after this repo is on GitHub)
+## آدرس پرچم‌ها
 
-jsDelivr:
+آخرین نسخه از شاخه `main`:
 
 ```text
 https://cdn.jsdelivr.net/gh/SonoJS/SonoJS-flags@main/flags/ir.svg
 ```
 
-GitHub Pages (if enabled):
+کد کشور را عوض کن؛ مثلاً `us`، `gb-eng`، `eu`.
 
-```text
-https://sonojs.github.io/SonoJS-flags/flags/ir.svg
-```
+اگر پرچم تازه عوض شده و هنوز قدیمی می‌بینی، چند دقیقه صبر کن یا کش مرورگر را یک‌بار سخت رفرش کن.
 
-`PhoneInput` uses this by default (`DEFAULT_FLAG_CDN_BASE`). Override with
-`flagCdnBase` if needed:
+## لایسنس
 
-```ts
-const src = `${FLAG_CDN_BASE}/flags/${code.toLowerCase()}.svg`
-```
-
-## License
-
-- Repository license: see `LICENSE`
-- Flag artwork attribution: see `NOTICE.md` (flag-icons MIT)
+جزئیات در `LICENSE` و `NOTICE.md`.
