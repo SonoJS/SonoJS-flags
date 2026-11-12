@@ -333,7 +333,7 @@
 
       .card {
         display: grid;
-        grid-template-columns: 44px 1fr;
+        grid-template-columns: 48px 1fr;
         gap: 12px;
         align-items: center;
         min-height: 68px;
@@ -364,21 +364,22 @@
       }
 
       .flag-frame {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        aspect-ratio: 3 / 2;
+        height: auto;
         flex-shrink: 0;
-        border-radius: 8px;
+        border-radius: 6px;
         border: 1px solid var(--border);
         background: color-mix(in oklab, var(--muted) 10%, transparent);
         overflow: hidden;
-        display: grid;
-        place-items: center;
+        display: block;
       }
 
       .flag-frame img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
         display: block;
       }
 
@@ -440,14 +441,15 @@
 
       .sheet-head {
         display: grid;
-        grid-template-columns: 56px 1fr auto;
+        grid-template-columns: 72px 1fr auto;
         gap: 12px;
         align-items: center;
       }
 
       .sheet-head .flag-frame {
-        width: 56px;
-        height: 56px;
+        width: 72px;
+        aspect-ratio: 3 / 2;
+        height: auto;
       }
 
       .sheet h2 {
@@ -817,7 +819,7 @@
       <form method="dialog" class="sheet">
         <div class="sheet-head">
           <div class="flag-frame">
-            <img id="sheet-flag" alt="" width="56" height="56" />
+            <img id="sheet-flag" alt="" width="72" height="48" />
           </div>
           <div>
             <h2 id="sheet-name">Country</h2>
@@ -1103,7 +1105,7 @@
           )
           btn.innerHTML = `
             <span class="flag-frame">
-              <img src="${flagPath(c.code)}" alt="" width="44" height="44" loading="lazy" decoding="async" />
+              <img src="${flagPath(c.code)}" alt="" width="48" height="32" loading="lazy" decoding="async" />
             </span>
             <span class="card-text">
               <span class="name" title="${escapeHtml(c.name)}">${escapeHtml(c.name)}</span>
