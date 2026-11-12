@@ -1,6 +1,6 @@
 # SonoJS Flags
 
-پرچم‌های SVG برای [SonoJS](https://sonojs.com) — مخصوص کامپوننت Phone Input و هر جایی که به آیکون کشور نیاز داری.
+پرچم‌های SVG برای [SonoJS](https://sonojs.com) — مخصوص Phone Input و هر جایی که آیکون کشور می‌خواهی.
 
 - سایت: [sonojs.com](https://sonojs.com)
 - گیت‌هاب SonoJS: [github.com/MiladJoodi/SonoJS](https://github.com/MiladJoodi/SonoJS)
@@ -14,21 +14,17 @@
 npx serve .
 ```
 
-بعد در مرورگر آدرسی که ترمینال می‌دهد را باز کن (مثلاً `http://localhost:3000`).
-
-یا فقط فایل `index.html` را باز کن.
+آدرسی که ترمینال می‌دهد را در مرورگر باز کن. یا فقط `index.html` را باز کن.
 
 ## آدرس پرچم‌ها
 
-آخرین نسخه از شاخه `main`:
+آخرین نسخه (همین ریپو روی GitHub Pages):
 
 ```text
-https://cdn.jsdelivr.net/gh/SonoJS/SonoJS-flags@main/flags/ir.svg
+https://sonojs.github.io/SonoJS-flags/flags/us.svg
 ```
 
-کد کشور را عوض کن؛ مثلاً `us`، `gb-eng`، `eu`.
-
-اگر پرچم تازه عوض شده و هنوز قدیمی می‌بینی، چند دقیقه صبر کن یا کش مرورگر را یک‌بار سخت رفرش کن.
+کد کشور را عوض کن؛ مثلاً `ir`، `gb-eng`، `eu`.
 
 ## لایسنس
 
