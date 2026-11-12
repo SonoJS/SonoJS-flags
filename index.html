@@ -78,13 +78,56 @@
         margin-inline: auto;
       }
 
-      header {
+      .page-head {
         display: flex;
         flex-wrap: wrap;
         gap: 12px 20px;
         align-items: end;
         justify-content: space-between;
         margin-bottom: 16px;
+      }
+
+      .page-head-aside {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .sono-link {
+        color: var(--muted);
+        font-size: 0.875rem;
+        text-decoration: none;
+      }
+
+      .sono-link:hover {
+        color: var(--text);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .github-link {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      .github-link:hover {
+        background: color-mix(in oklab, var(--muted) 10%, transparent);
+      }
+
+      .github-link svg {
+        width: 16px;
+        height: 16px;
       }
 
       h1 {
@@ -103,14 +146,6 @@
       .meta {
         color: var(--muted);
         font-size: 0.875rem;
-      }
-
-      .header-aside {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-        justify-content: flex-end;
       }
 
       .theme-toggle {
@@ -656,12 +691,35 @@
   </head>
   <body>
     <div class="wrap">
-      <header>
+      <header class="page-head">
         <div>
           <h1>SonoJS Flags</h1>
-          <p class="lede">Find a flag, copy the URL or snippet.</p>
+          <p class="lede">
+            Find a flag, copy the URL or snippet.
+            <a
+              class="sono-link"
+              href="https://sonojs.com"
+              target="_blank"
+              rel="noopener"
+              >SonoJS</a
+            >
+          </p>
         </div>
-        <div class="header-aside">
+        <div class="page-head-aside">
+          <a
+            class="github-link"
+            href="https://github.com/MiladJoodi/SonoJS"
+            target="_blank"
+            rel="noopener"
+            aria-label="SonoJS on GitHub"
+            title="GitHub"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 2C6.477 2 2 6.586 2 12.253c0 4.537 2.865 8.383 6.839 9.747.5.094.682-.222.682-.482 0-.237-.009-.866-.014-1.7-2.782.617-3.369-1.38-3.369-1.38-.455-1.183-1.11-1.498-1.11-1.498-.908-.635.069-.622.069-.622 1.003.072 1.53 1.06 1.53 1.06.892 1.566 2.341 1.114 2.91.852.091-.662.35-1.114.636-1.37-2.22-.259-4.555-1.141-4.555-5.078 0-1.121.39-2.038 1.029-2.756-.103-.26-.447-1.302.098-2.714 0 0 .84-.276 2.75 1.052A9.35 9.35 0 0 1 12 6.844a9.35 9.35 0 0 1 2.504.345c1.909-1.328 2.748-1.052 2.748-1.052.546 1.412.202 2.454.1 2.714.64.718 1.028 1.635 1.028 2.756 0 3.947-2.339 4.816-4.566 5.07.359.317.679.943.679 1.901 0 1.371-.013 2.477-.013 2.814 0 .263.18.58.688.481A10.02 10.02 0 0 0 22 12.253C22 6.586 17.523 2 12 2Z"
+              />
+            </svg>
+          </a>
           <button
             type="button"
             id="theme-toggle"
