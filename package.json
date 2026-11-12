@@ -1,0 +1,38 @@
+{
+  "name": "@sonojs/flags",
+  "version": "1.0.0",
+  "description": "SVG country flags for SonoJS - Phone Input and anywhere you need a country icon",
+  "license": "MIT",
+  "author": "Joodi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SonoJS/SonoJS-flags.git"
+  },
+  "homepage": "https://sonojs.github.io/SonoJS-flags",
+  "bugs": {
+    "url": "https://github.com/SonoJS/SonoJS-flags/issues"
+  },
+  "keywords": [
+    "sonojs",
+    "flags",
+    "svg",
+    "country",
+    "phone-input",
+    "iso3166"
+  ],
+  "files": [
+    "flags",
+    "countries.json",
+    "NOTICE.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./flags/*": "./flags/*",
+    "./countries.json": "./countries.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

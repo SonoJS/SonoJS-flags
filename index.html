@@ -881,18 +881,34 @@
 
           <div class="code-block">
             <div class="code-head">
-              <span>URL</span>
+              <span>URL · npm</span>
               <button
                 type="button"
                 class="copy-btn on-code"
                 data-copy="url"
-                aria-label="Copy URL"
+                aria-label="Copy npm URL"
               >
                 <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                 <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               </button>
             </div>
             <pre class="code-body" id="v-cdn"></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-head">
+              <span>URL · GitHub</span>
+              <button
+                type="button"
+                class="copy-btn on-code"
+                data-copy="urlGh"
+                aria-label="Copy GitHub URL"
+              >
+                <svg class="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+            <pre class="code-body" id="v-cdn-gh"></pre>
           </div>
 
           <div class="code-block">
@@ -925,7 +941,8 @@
 
     <script>
       const THEME_KEY = "sonojs-flags-theme"
-      const DEFAULT_BASE = "https://cdn.jsdelivr.net/gh/OWNER/SonoJS-flags@main"
+      const CDN_NPM = "https://cdn.jsdelivr.net/npm/@sonojs/flags"
+      const CDN_GH = "https://cdn.jsdelivr.net/gh/SonoJS/SonoJS-flags@main"
 
       const qEl = document.getElementById("q")
       const searchWrap = document.getElementById("search-wrap")
@@ -945,7 +962,7 @@
       /** @type {"az"|"za"} */
       let sortDir = "az"
       /** @type {Record<string,string>} */
-      let copyValues = { code: "", dial: "", url: "", img: "" }
+      let copyValues = { code: "", dial: "", url: "", urlGh: "", img: "" }
       const sortButtons = document.querySelectorAll("[data-sort]")
 
       function resolveTheme(pref) {
@@ -982,19 +999,8 @@
         return `flags/${code.toLowerCase()}.svg`
       }
 
-      function pageBase() {
-        if (!location.protocol.startsWith("http")) return ""
-        const path = location.pathname.replace(/\/index\.html?$/i, "")
-        const root = path.endsWith("/") ? path.slice(0, -1) : path
-        return `${location.origin}${root}`
-      }
-
-      function getBase() {
-        return pageBase() || DEFAULT_BASE
-      }
-
-      function cdnUrl(code) {
-        return `${getBase()}/flags/${code.toLowerCase()}.svg`
+      function cdnUrl(code, base = CDN_NPM) {
+        return `${base}/flags/${code.toLowerCase()}.svg`
       }
 
       function escapeHtml(value) {
@@ -1128,9 +1134,10 @@
       function openSheet(c) {
         selected = c
         setUrlCode(c.code)
-        const url = cdnUrl(c.code)
+        const url = cdnUrl(c.code, CDN_NPM)
+        const urlGh = cdnUrl(c.code, CDN_GH)
         const img = `<img src="${url}" alt="${c.name}" width="20" height="20" />`
-        copyValues = { code: c.code, dial: c.dial, url, img }
+        copyValues = { code: c.code, dial: c.dial, url, urlGh, img }
 
         document.getElementById("sheet-flag").src = flagPath(c.code)
         document.getElementById("sheet-name").textContent = c.name
@@ -1138,6 +1145,7 @@
         document.getElementById("v-code").textContent = c.code
         document.getElementById("v-dial").textContent = c.dial
         document.getElementById("v-cdn").innerHTML = highlightUrl(url)
+        document.getElementById("v-cdn-gh").innerHTML = highlightUrl(urlGh)
         document.getElementById("v-img").innerHTML = highlightImg(url, c.name)
         document.getElementById("open-svg").href = flagPath(c.code)
         if (!sheet.open) sheet.showModal()
