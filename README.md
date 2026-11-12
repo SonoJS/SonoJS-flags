@@ -1,31 +1,37 @@
 # SonoJS Flags
 
-پرچم‌های SVG برای [SonoJS](https://sonojs.com) — مخصوص Phone Input و هر جایی که آیکون کشور می‌خواهی.
+SVG country flags for [SonoJS](https://sonojs.com) — built for Phone Input and anywhere you need a country icon.
 
-- سایت: [sonojs.com](https://sonojs.com)
-- گیت‌هاب SonoJS: [github.com/MiladJoodi/SonoJS](https://github.com/MiladJoodi/SonoJS)
-- این ریپو: [github.com/SonoJS/SonoJS-flags](https://github.com/SonoJS/SonoJS-flags)
+- Site: [sonojs.com](https://sonojs.com)
+- SonoJS on GitHub: [github.com/MiladJoodi/SonoJS](https://github.com/MiladJoodi/SonoJS)
+- This repo: [github.com/SonoJS/SonoJS-flags](https://github.com/SonoJS/SonoJS-flags)
 
-## اجرا (دیدن لیست پرچم‌ها)
+## Preview
 
-از پوشه همین پروژه:
+From this project folder:
 
 ```bash
 npx serve .
 ```
 
-آدرسی که ترمینال می‌دهد را در مرورگر باز کن. یا فقط `index.html` را باز کن.
+Open the URL the terminal prints, or open `index.html` directly.
 
-## آدرس پرچم‌ها
+## Flag URLs
 
-آخرین نسخه (همین ریپو روی GitHub Pages):
+Latest files (this repo on GitHub Pages):
 
 ```text
 https://sonojs.github.io/SonoJS-flags/flags/us.svg
 ```
 
-کد کشور را عوض کن؛ مثلاً `ir`، `gb-eng`، `eu`.
+Swap the country code — e.g. `ir`, `gb-eng`, `eu`.
 
-## لایسنس
+jsDelivr:
 
-جزئیات در `LICENSE` و `NOTICE.md`.
+```text
+https://cdn.jsdelivr.net/gh/SonoJS/SonoJS-flags@main/flags/us.svg
+```
+
+## License
+
+See `LICENSE` and `NOTICE.md`.
